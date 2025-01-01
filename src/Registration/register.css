@@ -1,0 +1,70 @@
+.Registration-page{
+    width: 90%;
+    height: 90vh;
+    margin: auto;
+    display: flex;
+}
+.Registration-form{
+    padding: 30px;
+    box-shadow: 0px 0px 5px 1px hsl(40, 6%, 90%);
+    width:fit-content;
+    margin: auto;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Registration-form input{
+    margin-bottom: 10px;
+    border: 1px solid blue;
+    width: 300px;
+    padding: 5px;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: oblique;
+    height: 30px;
+}
+.Registration-page  label{
+    border: 1px solid blue;
+    margin-bottom: 5px;
+    width: 300px;
+    padding: 5px;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: oblique;
+    height: 30px;
+}
+.Registration-page .club-select{
+    padding: 2px ;
+    font-size: 16px;
+    margin-left: 10px;
+    border:1px solid tomato;
+}
+ .eye{
+    display: flex;
+    margin-left: auto;
+    padding: 5px;
+    margin-top: -40px;
+    margin-bottom: 40px;
+}
+.Registration-form button{
+    width: 310px;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color:black;  
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 10px;
+}
+.Registration-form button:hover{
+    background-color: rgb(139, 150, 140);
+}
+.Registration-form button:active{
+    background-color:rgb(157, 50, 31);
+    color: white;
+}

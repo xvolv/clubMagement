@@ -1,0 +1,84 @@
+body{
+  width: 100%;
+  margin: auto;
+}
+.nav{
+margin-bottom: 20px;
+align-items: center;
+justify-content: space-between;
+width: 100%;
+background-color: rgb(15, 15, 117);
+color: white;
+display: flex;
+ }
+ .nav .search{
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  padding: 7px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+  width: 40%;
+ }
+ .nav .search-icon{
+  margin-left: -250px;
+  color: #2980b9;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+ .dropdown-content{
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  width: fit-content;
+  display:flex;
+  margin-left: auto;
+  flex-direction: column;
+  padding: 30px;
+ }
+ .dropdown-content a{
+  margin: 5px;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 18px;
+  box-shadow:1px 1px 1px 2px wheat;
+ }
+ .dropdown-content a:hover{
+  background-color:whitesmoke;
+ }
+.nav .logo{
+margin-left: 2px;
+color: #007bff;
+width: 60px;
+border-radius: 2px;
+height: fit-content;
+}
+.logo {
+height: 50px;
+}
+
+.lists {
+padding: 5px;
+display: flex;
+color: white;
+justify-content: center; 
+list-style: none;
+}
+.lists li {
+margin: 0 15px;
+}
+
+.lists a {
+text-decoration: none; 
+font-size: 18px;
+color: white;
+}
+
+.lists a:hover {
+color: #007bff; 
+}
+.lists li.actives a {
+color: #ff8800;
+border-bottom: 3px solid tomato; 
+padding-bottom: 5px;
+}
