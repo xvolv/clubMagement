@@ -1,7 +1,8 @@
 .contact-page {
-    background-color:black;
+    background-color: black;
     width: 100%;
 }
+
 .contact-list h2,
 .club-pages h2 {
     text-align: center;
@@ -9,18 +10,51 @@
     color: rgb(234, 229, 229);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.contact-list1, .club-list{
+
+.contact-list1, .club-list {
     display: flex;
-    gap:10px;
-    justify-content: center; 
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .contact-list1 a, .club-list a {
-    color:rgb(31, 14, 155);
-    font-size: 24px; 
+    color: rgb(31, 14, 155);
+    font-size: 24px;
     transition: color 0.3s;
 }
-.contact-list1 .scroll-to-top{
-    color:rgb(25, 46, 234);
+
+.contact-list1 .scroll-to-top {
+    color: rgb(25, 46, 234);
     font-size: 30px;
+}
+
+@media (max-width: 768px) {
+    .contact-list h2,
+    .club-pages h2 {
+        font-size: 20px;
+    }
+
+    .contact-list1 a, .club-list a {
+        font-size: 20px;
+    }
+
+    .contact-list1 .scroll-to-top {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-list h2,
+    .club-pages h2 {
+        font-size: 18px;
+    }
+
+    .contact-list1 a, .club-list a {
+        font-size: 18px;
+    }
+
+    .contact-list1 .scroll-to-top {
+        font-size: 22px;
+    }
 }

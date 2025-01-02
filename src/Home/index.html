@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slideshow</title>
+  <style>
+    .image-container {
+      width: 800px;
+      height: 300px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .dynamic-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 10;
+      transition: opacity 2s ease-in-out; /* Apply the fade effect */
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* Optional: Add some styles for the container if needed */
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img id="image" class="dynamic-image" src="image1.png" alt="Image 1">
+  </div>
+
+  <script>
+    const images = [
+      'image1.png',
+      'image2.png',
+      'image.png'
+    ];
+
+    let currentImageIndex = 0;
+
+    function changeImage() {
+      const imgElement = document.getElementById('image');
+      imgElement.style.opacity = 0;
+
+      setTimeout(() => {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        imgElement.src = images[currentImageIndex];
+        imgElement.style.opacity = 1;  
+      }, 1000); 
+    }
+
+    setInterval(changeImage, 5000);
+  </script>
+</body>
+</html>

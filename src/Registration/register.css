@@ -1,70 +1,118 @@
-.Registration-page{
+.Registration-page {
     width: 90%;
-    height: 90vh;
+    min-height: 90vh;
     margin: auto;
     display: flex;
-}
-.Registration-form{
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Registration-form {
     padding: 30px;
     box-shadow: 0px 0px 5px 1px hsl(40, 6%, 90%);
-    width:fit-content;
-    margin: auto;
-    display: flex;
+    width: fit-content;
     border-radius: 10px;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.Registration-form input{
+    background-color: #fff;
+  }
+  
+  .Registration-form input {
     margin-bottom: 10px;
     border: 1px solid blue;
     width: 300px;
-    padding: 5px;
-    font-size: 20px;
+    padding: 8px;
+    font-size: 18px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: oblique;
-    height: 30px;
-}
-.Registration-page  label{
-    border: 1px solid blue;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .Registration-form input:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0px 0px 5px rgba(41, 128, 185, 0.5);
+  }
+  
+  .Registration-page label {
     margin-bottom: 5px;
     width: 300px;
     padding: 5px;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: oblique;
-    height: 30px;
-}
-.Registration-page .club-select{
-    padding: 2px ;
-    font-size: 16px;
-    margin-left: 10px;
-    border:1px solid tomato;
-}
- .eye{
-    display: flex;
-    margin-left: auto;
+    color: #333;
+  }
+  
+  .Registration-page .club-select {
     padding: 5px;
-    margin-top: -40px;
-    margin-bottom: 40px;
-}
-.Registration-form button{
-    width: 310px;
+    font-size: 16px;
+    border: 1px solid tomato;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 320px;
+  }
+  
+  .eye {
+    display: flex;
+    margin-left: auto 20px;
+    margin-bottom: -20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  
+  .Registration-form button {
+    width: 320px;
     padding: 12px;
     margin-bottom: 10px;
-    background-color:black;  
+    background-color: black;
     cursor: pointer;
     border: none;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 10px;
-}
-.Registration-form button:hover{
+    transition: background-color 0.3s ease;
+  }
+  
+  .Registration-form button:hover {
     background-color: rgb(139, 150, 140);
-}
-.Registration-form button:active{
-    background-color:rgb(157, 50, 31);
+  }
+  
+  .Registration-form button:active {
+    background-color: rgb(157, 50, 31);
     color: white;
-}
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .Registration-form input,
+    .Registration-page label,
+    .Registration-form button {
+      width: 100%;
+    }
+  
+    .Registration-page .club-select {
+      width: 100%;
+    }
+  
+    .eye {
+      margin-top: -25px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .Registration-form {
+      padding: 20px;
+    }
+  
+    .Registration-form input,
+    .Registration-page label,
+    .Registration-form button {
+      font-size: 16px;
+    }
+  }  
