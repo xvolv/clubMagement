@@ -31,7 +31,7 @@ const Navbar = () => {
             onClick={() => setActiveItem('contact')}
             className={activeItem === 'contact' ? 'actives' : ''}
           >
-            <a href='#contact'>Contact us</a>
+         <Link to="">  <a href='#contact'>Contact us</a></Link> 
           </li>
           <li
             onMouseEnter={() => setDropDown(true)}
