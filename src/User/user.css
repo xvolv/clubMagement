@@ -85,9 +85,7 @@
     color: white;
     transform: scale(0.98);
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
     .user-form input,
     .user-page label {
       width: 90%;

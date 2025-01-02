@@ -32,14 +32,14 @@ const AdminLogin = () => {
   return (
     <div className='admin-page'>
       <form className='admin-form' onSubmit={adminLoginHandler}>
-        <label htmlFor="club-select">Choose a club:</label>
+        <label htmlFor="club-select">Choose a club:
         <select className="club-select" name="club">
           <option value="tech">Tech Club</option>
           <option value="sports">Sports Club</option>
           <option value="art">Art Club</option>
           <option value="peace">Peace Club</option>
         </select>
-
+        </label>
         <input
           type="text"
           name="admin_name"

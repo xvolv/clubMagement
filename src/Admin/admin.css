@@ -16,6 +16,7 @@
     align-items: center;
 }
 .admin-form input{
+    display: flex;
     margin-bottom: 10px;
     border: 1px solid blue;
     width: 300px;

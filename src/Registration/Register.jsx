@@ -13,7 +13,7 @@ const Registration =() => {
   return (
     <div className='Registration-page'>
         <form className='Registration-form'> 
-        <label for="club-select">Choose a club:
+        <label for="club-select">
     <select className="club-select" name="clubs">
         <option value="sports">Sports Club</option>
         <option value="tech">Tech Club</option>
