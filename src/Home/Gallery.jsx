@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from 'react'
+import {useState,useEffect} from 'react';
 import Sport from "./sport.png";
 import Tech from "./tech.png";
 import Peace from "./peace.png";
@@ -9,9 +10,14 @@ import image3 from './image3.png';
 import { Link } from 'react-router-dom';
 import "./gallery.css";
 
+
 const Gallery = () => {
-  var counter1=1;
-  const dataTopass="this is the text of the image that support some thing.";
+  const [events , setEvent] = useState({
+    event1: '🗓️ Peace Workshop - December 12, 2024: Join us for an engaging workshop focused on conflict resolution and understanding diverse perspectives. Open to all members!',
+    event2:'🗓️ Peace Workshop - December 12, 2024: Join us for an engaging workshop focused on conflict resolution and understanding diverse perspectives. Open to all members!',
+    event3:'',
+    event4:''
+  });
   const [image, setImage] = useState('');
   const [currentImage, setCurrentImage] = useState(image1);
   const [showEvent, setShowEvent] = useState(false);
@@ -75,8 +81,8 @@ const Gallery = () => {
 
       {showEvent && (
         <div className="event-list">
-          <div className="event-item">🗓️ Peace Workshop - December 12, 2024: Join us for an engaging workshop focused on conflict resolution and understanding diverse perspectives. Open to all members!</div>
-          <div className="event-item">🗓️ Peace Workshop - December 12, 2024: Join us for an engaging workshop focused on conflict resolution and understanding diverse perspectives. Open to all members!</div>
+          <div className="event-item">{events.event2}</div>
+          <div className="event-item">{events.event1}</div>
         </div>
       )}
 
