@@ -19,7 +19,7 @@ const Navbar = () => {
             onClick={() => setActiveItem('home')}
             className={activeItem === 'home' ? 'actives' : ''}
           >
-            <Link to='/'>Home</Link>
+            <Link to='/'><i className="fa-solid fa-house"></i></Link>
           </li>
           <li
             onClick={() => setActiveItem('about')}
@@ -31,8 +31,9 @@ const Navbar = () => {
             onClick={() => setActiveItem('contact')}
             className={activeItem === 'contact' ? 'actives' : ''}
           >
-         <Link to="">  <a href='#contact'>Contact us</a></Link> 
           </li>
+          <li  onClick={() => setActiveItem('register')}
+        className={activeItem === 'register' ? 'actives' : ''}><Link to='/register'>Register</Link></li>
           <li
             onMouseEnter={() => setDropDown(true)}
             onMouseLeave={() => setDropDown(false)}

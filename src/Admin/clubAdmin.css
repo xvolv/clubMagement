@@ -1,42 +1,49 @@
-.club-admin-content{
+.club-admin-content {
+    margin-top: 20px;
+    margin-left: 30px;
     display: flex;
     gap: 30px;
+    flex-wrap: wrap; /* Ensure elements wrap on smaller screens */
+    justify-content: flex-start; /* Align items to the left */
 }
-.admin-tasks button{
- margin-right: 35px;
- background-color: #1a6692;
-padding:10px;
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-font-size: 16px;
+
+.admin-tasks button {
+    margin-right: 35px;
+    background-color: #1a6692;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
-.admin-tasks button:hover{
-    background-color:black ;
+
+.admin-tasks button:hover {
+    background-color: black;
 }
-.admin-tasks .active-button{
-    background-color:rgb(157, 50, 31);
+
+.admin-tasks .active-button {
+    background-color: rgb(157, 50, 31);
     color: white;
 }
 
 .add-event-form {
-
     margin-top: 7%;
     margin-left: 30px;
     padding: 50px;
     box-shadow: 0px 0px 5px 1px hsl(40, 6%, 90%);
-    width:fit-content;
+    width: fit-content;
     display: flex;
     border-radius: 10px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.add-event-form  input{
+
+.add-event-form input {
     margin-bottom: 10px;
     border: 1px solid blue;
-    width: 300px;
+    width: 350px;
     padding: 5px;
     text-align: center;
     font-size: 20px;
@@ -45,11 +52,11 @@ font-size: 16px;
     height: 30px;
 }
 
-.add-event-form  button{
+.add-event-form button {
     width: 310px;
     padding: 12px;
     margin-bottom: 10px;
-    background-color:black;  
+    background-color: black;
     cursor: pointer;
     border: none;
     color: white;
@@ -57,30 +64,95 @@ font-size: 16px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 10px;
 }
-.add-event-form  button:hover{
+
+.add-event-form button:hover {
     background-color: rgb(139, 150, 140);
 }
-.add-event-form  button:active{
-    background-color:rgb(157, 50, 31);
+
+.add-event-form button:active {
+    background-color: rgb(157, 50, 31);
     color: white;
 }
-.add-event-form textarea{
-    border: 1px solid blue;
+
+textarea {
+    border: 2px solid blue;
     margin-bottom: 5px;
-    width: 300px;
-    padding: 5px;
-    text-align: center;
+    color: red;
+    padding: 10px 0 0 0;
     font-size: 20px;
+    width: 350px;
+    text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: oblique;
-    height: 30px;
 }
-.add-event-form h2{
+
+.add-event-form h2 {
     margin-top: -20px;
     font-size: 30px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: oblique;
     color: rgb(11, 114, 80);
     padding-top: 0px;
-  
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .club-admin-content {
+        margin-left: 10px; /* Reduce left margin */
+        display: block; /* Stack elements vertically */
+    }
+
+    .admin-tasks {
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center;
+    }
+
+    .admin-tasks button {
+        margin-right: 0;
+        margin-bottom: 10px; /* Space between buttons */
+        width: 100%; /* Full width buttons */
+    }
+
+    .add-event-form {
+        margin-top: 5%; /* Adjust top margin */
+        margin-left: 10px; /* Reduce left margin */
+        padding: 20px; /* Reduce padding */
+        width: 100%; /* Full width form */
+        box-sizing: border-box; /* Ensure padding does not overflow */
+    }
+
+    .add-event-form input,
+    .add-event-form button,
+    textarea {
+        width: 100%; /* Full width inputs */
+        font-size: 16px; /* Reduce font size */
+    }
+
+    .add-event-form h2 {
+        font-size: 24px; /* Adjust heading size */
+    }
+}
+
+@media (max-width: 480px) {
+    .club-admin-content {
+        margin-left: 5px; /* Further reduce left margin */
+    }
+
+    .add-event-form {
+        margin-top: 5%; /* Adjust top margin */
+        margin-left: 5px; /* Further reduce left margin */
+        padding: 15px; /* Reduce padding for very small screens */
+    }
+
+    .add-event-form input,
+    .add-event-form button,
+    textarea {
+        width: 100%; /* Ensure elements fill available width */
+        font-size: 14px; /* Further reduce font size */
+    }
+
+    .add-event-form h2 {
+        font-size: 20px; /* Adjust heading size */
+    }
 }

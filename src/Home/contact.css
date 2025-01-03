@@ -7,19 +7,18 @@
 .club-pages h2 {
     text-align: center;
     font-size: 23px;
-    color: rgb(234, 229, 229);
+    color:rgb(6, 86, 45);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-.contact-list1, .club-list {
-    display: flex;
-    gap: 10px;
+.contact-list1{
+    display:flex;
     justify-content: center;
-    flex-wrap: wrap;
+    gap:20px;
+    
 }
 
-.contact-list1 a, .club-list a {
-    color: rgb(31, 14, 155);
+.contact-list1 a {
+    color: white;
     font-size: 24px;
     transition: color 0.3s;
 }

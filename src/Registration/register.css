@@ -16,7 +16,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color:rgb(86, 82, 83);
   }
   
   .Registration-form input {
@@ -34,14 +34,14 @@
   .Registration-form input:focus {
     outline: none;
     border-color: #2980b9;
-    box-shadow: 0px 0px 5px rgba(41, 128, 185, 0.5);
+    box-shadow: 1px 0px 5px rgba(41, 128, 185, 0.5);
   }
   
   .Registration-page label {
     margin-bottom: 9px;
   
   }
-  
+
   .Registration-page .club-select {
     padding: 5px;
     font-size: 16px;
@@ -72,7 +72,21 @@
     border-radius: 10px;
     transition: background-color 0.3s ease;
   }
-  
+  .Registration-page {
+  position: relative; 
+}
+
+.message {
+  color:rgb(8, 202, 8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.message.show {
+  opacity: 1; 
+}
   .Registration-form button:hover {
     background-color: rgb(139, 150, 140);
   }
@@ -81,9 +95,7 @@
     background-color: rgb(157, 50, 31);
     color: white;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
     .Registration-form input,
     .Registration-page label,
     .Registration-form button {

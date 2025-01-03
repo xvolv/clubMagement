@@ -1,36 +1,79 @@
-import React from 'react'
-import './register.css'
-import { useState } from 'react'
-const Registration =() => {
-  const [showPassword,setShowPassword]=useState(false);
-  const [Registration,setRegistration]=useState({
-    Registration_name:'',
-    Registration_password:''
-  })
-  const RegistrationHandle=(e)=>{
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './register.css';
 
-  }
+const Registration = () => {
+  const navigateToHome = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [registration, setRegistration] = useState({
+    registrationName: '',
+    registrationPassword: ''
+  });
+  const [message, setMessage] = useState('');
+  const [allow, setAllow] = useState(false);
+
+  const registrationHandler = (e) => {
+    e.preventDefault(); 
+    setMessage("Congratulations! You have successfully registered.You can join the club.");
+    setAllow(true);
+    setTimeout(() => {
+     navigateToHome('/'); 
+    },6000);
+  };
+
   return (
+    <div >
+    {allow && <div className='message'>{message}</div>}
+
     <div className='Registration-page'>
-        <form className='Registration-form'> 
-        <label for="club-select">
-    <select className="club-select" name="clubs">
-        <option value="sports">Sports Club</option>
-        <option value="tech">Tech Club</option>
-        <option value="art">Art Club</option>
-        <option value="peace">Peace Club</option>
-    </select>  </label>
-            <input type='text'placeholder='Register user name' required/>
-            <input type='text'placeholder='👤 Full Name name' required/>
-            <input type='text'placeholder='📚Department' required/>
-            <input type='email'placeholder='✉️email' required/>
-            <input type='number'placeholder='🙍Batch' required/>
-            <input type={showPassword?'text':'password'}placeholder="confirm password don't forget"required/>
-            <i onClick={()=>setShowPassword(!showPassword)} className="fa-solid fa-eye eye"></i>
-            <button className='forget-password'>Register</button>
-            <button onClick={()=>alert("You can login in login option on the right corner of the page ")}className='submit-login'type='submit'>Already have account</button>
-    </form>
+      <form className='Registration-form' onSubmit={registrationHandler}>
+        <input 
+          type='text' 
+          placeholder='Register user name' 
+          required 
+          value={registration.registrationName} 
+          onChange={(e) => setRegistration({ ...registration, registrationName: e.target.value })} 
+        />
+        <input 
+          type='text' 
+          placeholder='👤 Full Name' 
+          required 
+        />
+        <input 
+          type='text' 
+          placeholder='📚 Department' 
+          required 
+        />
+        <input 
+          type='email' 
+          placeholder='✉️ Email' 
+          required 
+        />
+        <input 
+          type='number' 
+          placeholder='🙍 Batch' 
+          required 
+          min={2020} 
+          max={2027} 
+        />
+        <input 
+          type={showPassword ? 'text' : 'password'} 
+          placeholder="Confirm password (don't forget)" 
+          required 
+        />
+        <i onClick={() => setShowPassword(!showPassword)} className="fa-solid fa-eye eye"></i>
+        <button className='register-button' type='submit'>Register</button>
+        <button 
+          onClick={() => alert("You can login in the login option on the right corner of the page")} 
+          className='submit-login' 
+          type='button'
+        >
+          Already have an account?
+        </button>
+      </form>
     </div>
-  )
-}
-export default Registration
+    </div>
+  );
+};
+
+export default Registration;

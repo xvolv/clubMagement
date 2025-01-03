@@ -6,18 +6,22 @@ body {
   overflow-y: auto;
 }
 .nav {
-  margin: 0 0  30px 0; 
+  margin: 0 0  0px 0; 
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background-color: rgb(15, 15, 117);
+  background-color: black;
   color: white;
   display: flex;
   padding: 20px 20px;
   box-sizing: border-box;
 }
+.register-link {
+color:#27bf46;
 
+}
 .lists {
+  
   padding: 0;
   display: flex;
   color: white;
@@ -27,7 +31,7 @@ body {
 }
 
 .lists li {
-  margin: 0 15px;
+  margin: 0 10px;
   position: relative;
 }
 
@@ -39,7 +43,7 @@ body {
 }
 
 .lists a:hover {
-  color: #007bff;
+  color: #00ff48;
 }
 
 .lists li.actives a {
@@ -51,7 +55,7 @@ body {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
+  left:0;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
@@ -94,9 +98,8 @@ body {
   }
 }
 
-/* Button Styles */
 button {
-  margin: 0; /* Remove margin */
+  margin: 0; 
   padding: 10px 20px;
   border-radius: 5px;
   background-color: #333;

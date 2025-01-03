@@ -2,8 +2,16 @@ import React from 'react';
 import './seeMore.css';
 import { useState } from 'react';
 import Image1 from './sport.png';
+import { useLocation } from 'react-router-dom';
 
-const SeeMore = () => {
+const Sport = () => {
+  const [idValue,setId]=useState({
+    id:''
+  })
+  const idHandler=(e)=>{
+    e.preventDefault();
+    console.log(idValue)
+  }
   const eventData = [
     {   
       id: 1, 
@@ -27,6 +35,7 @@ const SeeMore = () => {
 
   return (
     <div className='see-more-page'>
+      
       <div className='see-more-content'>
         <h2>Sport Club is a club that promotes physical fitness, teamwork, and competitive sports, organizing tournaments and training sessions in football, basketball, and more.<strong>Here below are some of our event we conduct throughout this year</strong></h2>
       </div>
@@ -39,8 +48,36 @@ const SeeMore = () => {
           </div>
         ))
       }
+      <div className='join-contact'>
+      <div className='club-list'>
+  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+    <i className="fa-brands fa-facebook"></i>
+  </a>
+  <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+    <i className="fa-brands fa-twitter"></i>
+  </a>
+  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+    <i className="fa-brands fa-instagram"></i>
+  </a>
+  <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+    <i className="fa-brands fa-youtube"></i>
+  </a>
+  <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
+    <i className='fa-brands fa-telegram'></i>
+  </a>
+  <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">
+    <i className='fa-brands fa-tiktok'></i>
+  </a>
+</div>
+<div className='button-list'>
+  <form action="" onSubmit={idHandler}>
+  <input type="text"name ="id" required placeholder='Enter your registration id'value={idValue.id} onChange={(e)=>setId({...idValue,id:e.target.value})} ></input>
+  <button type="submit">Join</button>
+  </form>
+</div>
+</div>
     </div>
   );
 };
 
-export default SeeMore;
+export default Sport;
