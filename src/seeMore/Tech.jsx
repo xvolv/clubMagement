@@ -1,16 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './seeMore.css';
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { getUserById, joinTechClub } from '../Service/JoinClubService'; // Import the service functions
 
 const Tech = () => {
-  const [idValue, setId] = useState({
-    id: ''
+  const [formData, setFormData] = useState({
+    id: '',
+    username: '',
   });
+  const [message, setMessage] = useState('');
 
-  const idHandler = (e) => {
+  const idHandler = async (e) => {
     e.preventDefault();
-    console.log(idValue);
+    try {
+      // Fetch user data by ID
+      const response = await getUserById(formData.id);
+      if (response.data) {
+        // If user exists, verify the username
+        if (response.data.username === formData.username) {
+          // If username matches, join the tech club
+          try {
+            await joinTechClub(formData.id);
+            setMessage("Successfully joined the Tech Club!");
+          } catch (joinError) {
+            if (joinError.response && joinError.response.status === 409) {
+              // Conflict status code indicates the user is already a member
+              setMessage("You are already a member of the Tech Club.");
+            } else {
+              setMessage("Failed to join the Tech Club.");
+            }
+          }
+        } else {
+          setMessage("Username does not match. Please check your username.");
+        }
+      } else {
+        setMessage("User not found. Please register first.");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      setMessage("Failed to fetch user data.");
+    }
   };
 
   const eventData = [
@@ -70,10 +98,27 @@ const Tech = () => {
           </a>
         </div>
         <div className='button-list'>
-          <form action="" onSubmit={idHandler}>
-            <input type="text" name="id" required placeholder='Enter your registration ID' value={idValue.id} onChange={(e) => setId({ ...idValue, id: e.target.value })} />
+          <form onSubmit={idHandler}>
+          {message && <p>{message}</p>}
+            <input
+              type="text"
+              name="id"
+              required
+              placeholder='Enter your registration ID'
+              value={formData.id}
+              onChange={(e) => setFormData({ ...formData, id: e.target.value })}
+            />
+            <input
+              type="text"
+              name="username"
+              required
+              placeholder='Enter your username'
+              value={formData.username}
+              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+            />
             <button type="submit">Join</button>
           </form>
+         
         </div>
       </div>
     </div>
