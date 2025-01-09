@@ -5,7 +5,7 @@ import Navbar from './Home/Navbar';
 import Art from './seeMore/Art';
 import Peace from './seeMore/Peace';
 import Tech from './seeMore/Tech';
-
+import Event from './event/Event';
 import Home from './Home/Home';
 import AdminLogin from './Admin/AdminLogin';
 import User from './User/User';
@@ -27,6 +27,7 @@ const App = () => {
         <Route path='/tech' element={<Tech/>}/>
         <Route path="/sport" element={<Sport />} />
         <Route path='/peace' element={<Peace/>}/>
+        <Route path="/event" element={<Event/>}></Route>
       </Routes>
     </Router>
   );

@@ -1,43 +1,32 @@
 import React, { useState } from "react";
 import "./seeMore.css";
-import { getUserById, joinPeaceClub } from "../Service/JoinClubService"; // Import service functions
+import { joinPeaceClub } from "../Service/JoinClubService"; // Only import the joinPeaceClub function
 
 const Peace = () => {
   const [formData, setFormData] = useState({
     id: "",
     username: "",
+    password: "", // You can still collect the password if needed
   });
   const [message, setMessage] = useState("");
 
   const idHandler = async (e) => {
     e.preventDefault();
+
+    // Simulating user ID here, replace with actual user ID if available
+    const userId = formData.id; // Use formData.id as user ID
+
     try {
-      // Fetch user data by ID
-      const response = await getUserById(formData.id);
-      if (response.data) {
-        // If user exists, verify the username
-        if (response.data.username === formData.username) {
-          // If username matches, join the Peace Club
-          try {
-            await joinPeaceClub(formData.id);
-            setMessage("Successfully joined the Peace Club!");
-          } catch (joinError) {
-            if (joinError.response && joinError.response.status === 409) {
-              // Conflict status code indicates the user is already a member
-              setMessage("You are already a member of the Peace Club.");
-            } else {
-              setMessage("Failed to join the Peace Club.");
-            }
-          }
-        } else {
-          setMessage("Username does not match. Please check your username.");
-        }
+      // Attempt to join the Peace Club
+      await joinPeaceClub(userId);
+      setMessage("Successfully joined the Peace Club!");
+    } catch (joinError) {
+      if (joinError.response && joinError.response.status === 409) {
+        // Conflict status code indicates the user is already a member
+        setMessage("You are already a member of the Peace Club.");
       } else {
-        setMessage("User not found. Please register first.");
+        setMessage("Failed to join the Peace Club.");
       }
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-      setMessage("Failed to fetch user data.");
     }
   };
 
@@ -148,6 +137,16 @@ const Peace = () => {
               value={formData.username}
               onChange={(e) =>
                 setFormData({ ...formData, username: e.target.value })
+              }
+            />
+            <input
+              type="password"
+              name="password"
+              required
+              placeholder="Enter your password"
+              value={formData.password}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
               }
             />
             <button type="submit">Join</button>

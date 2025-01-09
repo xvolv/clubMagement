@@ -1,44 +1,27 @@
 import React, { useState } from "react";
 import "./seeMore.css";
-import { getUserById, joinSportClub } from "../Service/JoinClubService"; // Import the service functions
+import { joinSportClub } from "../Service/JoinClubService"; // Import the joinSportClub service function
 import Image1 from "./sport.png";
 
 const Sport = () => {
   const [formData, setFormData] = useState({
-    id: "",
     username: "",
   });
   const [message, setMessage] = useState("");
 
-  const idHandler = async (e) => {
+  const usernameHandler = async (e) => {
     e.preventDefault();
     try {
-      // Fetch user data by ID
-      const response = await getUserById(formData.id);
-      if (response.data) {
-        // If user exists, verify the username
-        if (response.data.username === formData.username) {
-          // If username matches, join the sport club
-          try {
-            await joinSportClub(formData.id);
-            setMessage("Successfully joined the Sport Club!");
-          } catch (joinError) {
-            if (joinError.response && joinError.response.status === 409) {
-              // Conflict status code indicates the user is already a member
-              setMessage("You are already a member of the Sport Club.");
-            } else {
-              setMessage("Failed to join the Sport Club.");
-            }
-          }
-        } else {
-          setMessage("Username does not match. Please check your username.");
-        }
+      // Directly join the sport club without verifying the user
+      await joinSportClub(formData.username); // Pass the username for joining
+      setMessage("Successfully joined the Sport Club!");
+    } catch (joinError) {
+      if (joinError.response && joinError.response.status === 409) {
+        // Conflict status code indicates the user is already a member
+        setMessage("You are already a member of the Sport Club.");
       } else {
-        setMessage("User not found. Please register first.");
+        setMessage("Failed to join the Sport Club.");
       }
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-      setMessage("Failed to fetch user data.");
     }
   };
 
@@ -74,7 +57,7 @@ const Sport = () => {
           competitive sports, organizing tournaments and training sessions in
           football, basketball, and more.
           <strong>
-            Here below are some of our event we conduct throughout this year
+            Here below are some of our events we conduct throughout this year
           </strong>
         </h2>
       </div>
@@ -131,17 +114,8 @@ const Sport = () => {
           </a>
         </div>
         <div className="button-list">
-          <form onSubmit={idHandler}>
+          <form onSubmit={usernameHandler}>
             {message && <p>{message}</p>}
-            <input
-              type="text"
-              name="id"
-              required
-              placeholder="Enter your registration ID"
-              value={formData.id}
-              onChange={(e) => setFormData({ ...formData, id: e.target.value })}
-            />
-
             <input
               type="text"
               name="username"

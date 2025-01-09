@@ -1,50 +1,37 @@
 import React, { useState } from "react";
 import "./seeMore.css";
-import { getUserById, joinArtClub } from "../Service/JoinClubService"; // Import the service functions
+import { joinArtClub } from "../Service/JoinClubService"; // Only import the joinArtClub function
 
 const Art = () => {
   const [formData, setFormData] = useState({
-    id: "",
     username: "",
+    password: "",
   });
   const [message, setMessage] = useState("");
 
   const idHandler = async (e) => {
     e.preventDefault();
+
+    // Simulating the user ID here (you can directly use the user ID if already available)
+    const userId = "user123"; // Replace this with the actual user ID.
+
     try {
-      // Fetch user data by ID
-      const response = await getUserById(formData.id);
-      if (response.data) {
-        // If user exists, verify the username
-        if (response.data.username === formData.username) {
-          // If username matches, join the art club
-          try {
-            await joinArtClub(formData.id);
-            setMessage("Successfully joined the Art Club!");
-          } catch (joinError) {
-            if (joinError.response && joinError.response.status === 409) {
-              // Conflict status code indicates the user is already a member
-              setMessage("You are already a member of the Art Club.");
-            } else {
-              setMessage("Failed to join the Art Club.");
-            }
-          }
-        } else {
-          setMessage("Username does not match. Please check your username.");
-        }
+      // Join the art club using the user ID
+      await joinArtClub(userId);
+      setMessage("Successfully joined the Art Club!");
+    } catch (joinError) {
+      if (joinError.response && joinError.response.status === 409) {
+        setMessage("You are already a member of the Art Club.");
       } else {
-        setMessage("User not found. Please register first.");
+        setMessage("Failed to join the Art Club.");
       }
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-      setMessage("Failed to fetch user data.");
     }
   };
 
   const eventData = [
     {
       id: 1,
-      img: " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-a5IJiPY5rQaVinmV2DgqkcSvWwM4hKmKSw&s",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-a5IJiPY5rQaVinmV2DgqkcSvWwM4hKmKSw&s",
       date: "September 2, 2024",
       details:
         "Annual Art Exhibition: A showcase of stunning paintings, sculptures, and digital art from talented artists across the community.",
@@ -133,20 +120,22 @@ const Art = () => {
             {message && <p>{message}</p>}
             <input
               type="text"
-              name="id"
-              required
-              placeholder="Enter your registration ID"
-              value={formData.id}
-              onChange={(e) => setFormData({ ...formData, id: e.target.value })}
-            />
-            <input
-              type="text"
               name="username"
               required
               placeholder="Enter your username"
               value={formData.username}
               onChange={(e) =>
                 setFormData({ ...formData, username: e.target.value })
+              }
+            />
+            <input
+              type="password"
+              name="password"
+              required
+              placeholder="Enter your password"
+              value={formData.password}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
               }
             />
             <button type="submit">Join</button>

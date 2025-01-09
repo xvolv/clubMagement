@@ -1,26 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { getAllEvents } from '../Service/EventService'; // Import the service function
+import React, { useState, useEffect } from "react";
+import { getAllEvents } from "../Service/EventService"; // Import the service function
 import Sport from "./sport.png";
 import Tech from "./tech.png";
 import Peace from "./peace.png";
-import Art from './art.png';
-import image1 from './image1.png';
-import image2 from './image2.png';
-import image3 from './image3.png';
-import { Link } from 'react-router-dom';
+import Art from "./art.png";
+import image1 from "./image1.png";
+import image2 from "./image2.png";
+import image3 from "./image3.png";
+import { Link } from "react-router-dom";
+
 import "./gallery.css";
 
 const Gallery = () => {
-  const [events, setEvents] = useState([]);  // Initialize as an empty array
-  const [image, setImage] = useState('');
+  const [events, setEvents] = useState([]); // Initialize as an empty array
+  const [image, setImage] = useState("");
   const [currentImage, setCurrentImage] = useState(image1);
   const [showEvent, setShowEvent] = useState(false);
 
   const images = [
-    { link_value: '/sport', src: Sport, detail: "The Sport Club promotes physical fitness, teamwork, and competitive sports, organizing tournaments and training sessions in football, basketball, and more." },
-    { link_value: '/tech', src: Tech, detail: "The Tech Club encourages innovation with coding challenges, hackathons, and workshops on AI, blockchain, and robotics." },
-    { link_value: '/peace', src: Peace, detail: "The Peace Club fosters understanding and conflict resolution through cultural exchanges, panel discussions, and leadership workshops." },
-    { link_value: '/art', src: Art, detail: "The Art Club celebrates creativity with activities in painting, sculpture, and photography, hosting exhibitions and workshops." }
+    {
+      link_value: "/sport",
+      src: Sport,
+      detail:
+        "The Sport Club promotes physical fitness, teamwork, and competitive sports, organizing tournaments and training sessions in football, basketball, and more.",
+    },
+    {
+      link_value: "/tech",
+      src: Tech,
+      detail:
+        "The Tech Club encourages innovation with coding challenges, hackathons, and workshops on AI, blockchain, and robotics.",
+    },
+    {
+      link_value: "/peace",
+      src: Peace,
+      detail:
+        "The Peace Club fosters understanding and conflict resolution through cultural exchanges, panel discussions, and leadership workshops.",
+    },
+    {
+      link_value: "/art",
+      src: Art,
+      detail:
+        "The Art Club celebrates creativity with activities in painting, sculpture, and photography, hosting exhibitions and workshops.",
+    },
   ];
 
   const imageArray = [image1, image2, image3];
@@ -31,11 +52,11 @@ const Gallery = () => {
   };
 
   const closeImage = () => {
-    setImage('');
+    setImage("");
   };
 
   const changeImage = () => {
-    const imgElement = document.getElementById('slideshow-image');
+    const imgElement = document.getElementById("slideshow-image");
     imgElement.style.opacity = 0;
 
     setTimeout(() => {
@@ -68,31 +89,49 @@ const Gallery = () => {
     <div className="photo-page" id="home">
       <h2>Manage Your Club Like a Pro</h2>
       <div className="slideshow-container">
-        <img id="slideshow-image" src={currentImage} alt="Slideshow" className="dynamic-image" />
+        <img
+          id="slideshow-image"
+          src={currentImage}
+          alt="Slideshow"
+          className="dynamic-image"
+        />
       </div>
 
-      <button className="btn-show-events" onClick={() => setShowEvent(!showEvent)}>
+      <button
+        className="btn-show-events"
+        onClick={() => setShowEvent(!showEvent)}
+      >
         📅 Show Events This Week
       </button>
 
       {showEvent && (
-        <div className="event-list">
-          {Array.isArray(events) && events.map((event, index) => (
-            <div key={event.id} className="event-item">
-              <strong>ID:</strong> {event.id} <br />
-              <strong>Details:</strong> {event.details}
-            </div>
-          ))}
-        </div>
+        <Link  to="/event">
+          <div className="event-list">
+            {Array.isArray(events) &&
+              events.map((event, index) => (
+                <div key={event.id} className="event-item">
+                  <strong>ID:</strong> {event.id} <br />
+                  <strong>Details:</strong> {event.details}
+                  <strong></strong>
+                </div>
+              ))}
+          </div>
+        </Link>
       )}
 
       <div className="photo-data">
         {images.map(({ src, detail, link_value }, index) => (
           <div key={index} className="image-container">
-            <img src={src} alt={`Club ${index}`} onClick={() => openImage(src)} />
+            <img
+              src={src}
+              alt={`Club ${index}`}
+              onClick={() => openImage(src)}
+            />
             <p>{detail}</p>
             <div className="register-seeMore">
-              <Link to={link_value} className='see-more'>Join us</Link>
+              <Link to={link_value} className="see-more">
+                Join us
+              </Link>
             </div>
           </div>
         ))}

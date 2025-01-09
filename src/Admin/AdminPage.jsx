@@ -98,6 +98,7 @@ const AdminPage = () => {
                     (e) => setDetails({ ...details, details: e.target.value }) // Updated field name to 'details'
                   }
                 ></textarea>
+                <input type="file" accept="image/*"  />
                 <button
                   onSubmit={addHandler}
                   className="submit-login"
@@ -136,6 +137,7 @@ const AdminPage = () => {
                     setEdit({ ...edit, editedDetail: e.target.value })
                   }
                 ></textarea>
+
                 <button className="submit-login" type="submit">
                   Save change
                 </button>
