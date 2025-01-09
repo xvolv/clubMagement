@@ -5,7 +5,6 @@ import com.club.real.dto.UserDto;
 import com.club.real.service.exception.UserAlreadyMemberException;
 import com.club.real.service.TechClubMembershipService;
 import com.club.real.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,18 +13,21 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/tech-club-memberships")
 public class TechClubMembershipController {
 
-  @Autowired
-  private TechClubMembershipService techClubMembershipService;
+  private final TechClubMembershipService techClubMembershipService;
+  private final UserService userService;
 
-  @Autowired
-  private UserService userService;
+  public TechClubMembershipController(TechClubMembershipService techClubMembershipService, UserService userService) {
+    this.techClubMembershipService = techClubMembershipService;
+    this.userService = userService;
+  }
 
-  @PostMapping("/join/{userId}")
-  public ResponseEntity<TechClubMembershipDto> joinTechClub(@PathVariable Long userId) {
-    // Fetch user information from the user service
-    UserDto userDto = userService.getUserById(userId);
+  @PostMapping("/join")
+  public ResponseEntity<TechClubMembershipDto> joinTechClub(@RequestParam String userName, @RequestParam String password) {
+    // Fetch user by username and password using UserService
+    UserDto userDto = userService.getUserByUserNameAndPassword(userName, password);
+    
     if (userDto == null) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+      return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);  // Unauthorized if user not found
     }
 
     // Create a new TechClubMembershipDto
@@ -38,7 +40,7 @@ public class TechClubMembershipController {
       TechClubMembershipDto createdMember = techClubMembershipService.addMember(techClubMembershipDto);
       return new ResponseEntity<>(createdMember, HttpStatus.CREATED);
     } catch (UserAlreadyMemberException e) {
-      return new ResponseEntity<>(HttpStatus.CONFLICT);
+      return new ResponseEntity<>(HttpStatus.CONFLICT);  // Conflict if user is already a member
     }
   }
 }

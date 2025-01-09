@@ -1,6 +1,6 @@
 package com.club.real.service;
 
-import com.club.real.dto.PeaceClubMembershipDto;
+import com.club.real.controller.PeaceClubMembershipDto;
 
 public interface PeaceClubMembershipService {
   PeaceClubMembershipDto addMember(PeaceClubMembershipDto dto);

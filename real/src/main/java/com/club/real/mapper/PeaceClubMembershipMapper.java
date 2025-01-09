@@ -1,6 +1,6 @@
 package com.club.real.mapper;
 
-import com.club.real.dto.PeaceClubMembershipDto;
+import com.club.real.controller.PeaceClubMembershipDto;
 import com.club.real.model.PeaceClubMembership;
 
 public class PeaceClubMembershipMapper {

@@ -1,4 +1,4 @@
-package com.club.real.dto;
+package com.club.real.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

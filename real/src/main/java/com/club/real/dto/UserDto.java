@@ -13,7 +13,7 @@ public class UserDto {
   private Long id;
   private String fullName;
   private String email;
-  private String password; // Password will be received here from the client
+  private String password;
   private String department;
   private String batch;
   private String userName;

@@ -10,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TechClubMembershipDto {
+
   private Long id;
   private Long userId;
   private String userName;

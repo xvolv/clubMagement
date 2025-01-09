@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TechClubMembershipRepository extends JpaRepository<TechClubMembership, Long> {
+
   boolean existsByUserId(Long userId);
 }

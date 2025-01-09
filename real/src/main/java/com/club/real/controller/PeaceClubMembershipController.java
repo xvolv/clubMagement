@@ -1,6 +1,5 @@
 package com.club.real.controller;
 
-import com.club.real.dto.PeaceClubMembershipDto;
 import com.club.real.dto.UserDto;
 import com.club.real.service.exception.UserAlreadyMemberException;
 import com.club.real.service.PeaceClubMembershipService;

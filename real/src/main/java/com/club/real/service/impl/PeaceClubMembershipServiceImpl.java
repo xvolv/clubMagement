@@ -1,7 +1,7 @@
 package com.club.real.service.impl;
 
-import com.club.real.dto.PeaceClubMembershipDto;
 import com.club.real.service.exception.UserAlreadyMemberException;
+import com.club.real.controller.PeaceClubMembershipDto;
 import com.club.real.mapper.PeaceClubMembershipMapper;
 import com.club.real.model.PeaceClubMembership;
 import com.club.real.repository.PeaceClubMembershipRepository;

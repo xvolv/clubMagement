@@ -23,4 +23,6 @@ public class TechClubMembership {
 
   @Column(name = "user_name", nullable = false)
   private String userName;
+
+  // Other fields...
 }
